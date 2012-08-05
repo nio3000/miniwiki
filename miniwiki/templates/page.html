@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{page_name}}</h1>
+<br>
+<pre>{{content}}</pre>
+<a href="{% url miniwiki_view page_name %}">See</a>
+<a href="{% url miniwiki_edit page_name %}">Edit</a>
+
+{% endblock %}
+
