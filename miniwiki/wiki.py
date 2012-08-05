@@ -4,10 +4,19 @@ from django.utils.safestring import mark_safe
 
 import re
 
+import markdown2
+from markdown2 import Markdown
+
 def linkify(text):
-    text = conditional_escape(text)
-
     pattern = re.compile(r'\[\[(\w+)\]\]')
-    tag = r'<a href="\1">\1</a>'
+    tag = r'[\1](/\1)'
 
-    return mark_safe(pattern.sub(tag, text))
+    return pattern.sub(tag, text)
+
+def wikify(text):
+
+    text = linkify(text)
+
+    text = Markdown(safe_mode="escape").convert(text)
+
+    return mark_safe(text)

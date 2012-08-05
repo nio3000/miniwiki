@@ -5,19 +5,19 @@ from django.core.urlresolvers import reverse
 
 from miniwiki.models import Page
 
-from wiki import linkify
+from wiki import wikify
 
 def home(request):
-    return render_to_response('home.html')
+    return HttpResponseRedirect(reverse('miniwiki.views.page', args=('FrontPage',)))
 
-def page(request, page_name):
+def page(request, page_name = "FrontPage"):
     page_qs = Page.objects.filter(title=page_name)
     if not page_qs.count():
         return HttpResponseRedirect(reverse('miniwiki.views.edit', args=(page_name,)))
     else:
         page = page_qs.get()
 
-    return render_to_response('page.html', {'page_name': page_name, 'content': linkify(page.content)})
+    return render_to_response('page.html', {'page_name': page_name, 'content': wikify(page.content)})
 
 def edit(request, page_name):
     notification = ''
