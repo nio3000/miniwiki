@@ -2,12 +2,14 @@
 
 {% block content %}
 <h1>{{page_name}}</h1>
+<a href="{% url miniwiki_view page_name %}">See</a>
+<a href="{% url miniwiki_edit page_name %}?version={{version}}">Edit</a>
+<a href="{% url miniwiki_history page_name %}">History</a>
+(Document version: {{version}})
 <br>
 {{content}}
 <br>
 <hr>
-<a href="{% url miniwiki_view page_name %}">See</a>
-<a href="{% url miniwiki_edit page_name %}">Edit</a>
 
 {% endblock %}
 

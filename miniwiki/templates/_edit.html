@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-You're editing {{page_name}}.<br>
+<h1>{{page_name}}</h1>
+<a href="{% url miniwiki_view page_name %}">See</a>
+(Document version: {{version}})
 <br>
-<h2>{{notification}}</h2>
 <form method='post'>
     {% csrf_token %}
     <textarea name='content' cols='80' rows='20'>{{content}}</textarea>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load tags %}
+
+{% block content %}
+<h1>History of {{page_name}}</h1>
+<a href="{% url miniwiki_view page_name %}">See</a>
+<a href="{% url miniwiki_edit page_name %}">Edit</a>
+<br>
+<table border="1">
+{% for page in pages %}
+<tr>
+    <td>{{page.version}}</td>
+    <td>{{page.created_at|formated_time}}</td>
+    <td>{{page.content|cut}}</td>
+    <td><a href="{% url miniwiki_view page_name %}?version={{page.version}}">View</a></td>
+    <td><a href="{% url miniwiki_edit page_name %}?version={{page.version}}">Edit</a></td>
+</tr>
+{% endfor %}
+</table>
+<br>
+<hr>
+
+{% endblock %}
+

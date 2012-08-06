@@ -4,6 +4,10 @@
     <title>{{title}}</title>
 </head>
 <body>
+    {% if notice_message %}
+    <div class="notice_message">{{notice_message}}</div>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 </body>

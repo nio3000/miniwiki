@@ -8,8 +8,9 @@ PAGE_RE = r'\w+'
 
 urlpatterns = patterns('',
     url(r'^$', 'miniwiki.views.home'),
-    url(r'^(' + PAGE_RE + ')$', 'miniwiki.views.page', name='miniwiki_view'),
-    url(r'^_edit/(' + PAGE_RE + ')$', 'miniwiki.views.edit', name='miniwiki_edit'),
+    url(r'^(' + PAGE_RE + ')$', 'miniwiki.views.page', name = 'miniwiki_view'),
+    url(r'^_edit/(' + PAGE_RE + ')$', 'miniwiki.views.edit', name = 'miniwiki_edit'),
+    url(r'^_history/(' + PAGE_RE + ')$', 'miniwiki.views.history', name = 'miniwiki_history'),
 
     # Examples:
     # url(r'^$', 'miniwiki.views.home', name='home'),
