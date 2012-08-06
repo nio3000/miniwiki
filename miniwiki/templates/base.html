@@ -8,6 +8,14 @@
     <div class="notice_message">{{notice_message}}</div>
     {% endif %}
 
+    {% if not user.is_authenticated %}
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+    {% else %}
+    You are <a href="/profile">{{user}}</a>
+    <a href="/logout">Log out</a>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 </body>

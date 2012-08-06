@@ -12,6 +12,7 @@
     <td>{{page.version}}</td>
     <td>{{page.created_at|formated_time}}</td>
     <td>{{page.content|cut}}</td>
+    <td>{% if page.author %}{{ page.author }}{% else %}{{ page.author_ip }}{% endif %}
     <td><a href="{% url miniwiki_view page_name %}?version={{page.version}}">View</a></td>
     <td><a href="{% url miniwiki_edit page_name %}?version={{page.version}}">Edit</a></td>
 </tr>
